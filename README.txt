@@ -1,4 +1,4 @@
-# LuzTeclado
+# LuzTeclado V4 (com botao IR, buzzer, IR remoto)
 Acender a luz de iluminacao do teclado apenas quando o usuario estiver sentado a frente do mesmo.
 
 COMPONENTES:
@@ -8,7 +8,8 @@ Sensor de movimento;
 Sensor ultrassonico;
 Rele 5v 1ch;
 Sensor IR de reflexao;
-Receptor IR
+Buzzer;
+Receptor IR;
 
 LIGAÇÃO DOS COMPONENTES:
 

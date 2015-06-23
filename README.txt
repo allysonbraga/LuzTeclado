@@ -1,4 +1,4 @@
-# LuzTeclado
+# LuzTeclado V2
 Acender a luz de iluminacao do teclado apenas quando o usuario estiver sentado a frente do mesmo.
 
 COMPONENTES:

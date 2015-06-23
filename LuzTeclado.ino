@@ -1,15 +1,9 @@
-/*Created by RicardoKeso*/
-
-#include <IRremote.h>
-#include <NewTone.h>
+/*Created by RicardoKeso  - V1*/
 
 const int ultrassomEcho = 2;
 const int ultrassomPing = 3;
 const int movPower = 5;
 const int movData = 6;
-const int sensorReflex = 7;
-const int buzzer = 10;
-const int sensorIRremoto = 11;
 const int saidaRele = 12;
 const int ledPlaca = 13;
 const int sensorLuz = 3; //analogico
@@ -17,42 +11,20 @@ const int sensorLuz = 3; //analogico
 bool paused = false;
 int luzAmb;
 
-IRrecv irrecv(sensorIRremoto);  
-decode_results results;
-
 void setup(){
   Serial.begin(9600);
   pinMode(ledPlaca, OUTPUT);
   pinMode(movPower, OUTPUT);
   pinMode(ultrassomPing, OUTPUT);
   pinMode(saidaRele, OUTPUT);
-  pinMode(buzzer,OUTPUT);
-  irrecv.enableIRIn();
+  
   pinMode(movData, INPUT);
   pinMode(ultrassomEcho, INPUT);
-  pinMode(sensorReflex, INPUT);
 }
 
 void loop(){  
-  digitalWrite(ledPlaca, LOW);   
-    
-  if(digitalRead(sensorReflex) == 0){
-    paused = !paused;
-    Buzzer(buzzer, 2000, 20, 1);
-    while(digitalRead(sensorReflex) == 0){}
-  } else if(irrecv.decode(&results)){
-    if((results.value) == 0x40BF609F){//codigo do botao do controle remoto
-      paused = !paused;
-      Buzzer(buzzer, 2000, 20, 1);
-    }
-    irrecv.resume();  
-  }
-    
-  if(paused){      
-    SinalPlaca(ledPlaca, 5, 495);
-  } else {
-    Luzteclado();
-  }   
+  digitalWrite(ledPlaca, LOW);  
+  Luzteclado();
 }
 
 void Luzteclado(){
@@ -104,11 +76,4 @@ void SinalPlaca(int pino, int atrasoOn, int atrasoOff){
   delay(atrasoOn);
   digitalWrite(pino, LOW);
   delay(atrasoOff);
-}
-
-void Buzzer(int pino, int tom, int duracao, int repeticao){
-  for(int cont = 0; cont < repeticao; cont ++){    
-    NewTone(pino, tom, duracao);
-    delay(duracao);
-  }
 }

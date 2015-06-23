@@ -1,7 +1,4 @@
-/*Created by RicardoKeso*/
-
-#include <IRremote.h>
-#include <NewTone.h>
+/*Created by RicardoKeso - V3 (com botao IR, buzzer)*/
 
 const int ultrassomEcho = 2;
 const int ultrassomPing = 3;
@@ -9,16 +6,12 @@ const int movPower = 5;
 const int movData = 6;
 const int sensorReflex = 7;
 const int buzzer = 10;
-const int sensorIRremoto = 11;
 const int saidaRele = 12;
 const int ledPlaca = 13;
 const int sensorLuz = 3; //analogico
 
 bool paused = false;
 int luzAmb;
-
-IRrecv irrecv(sensorIRremoto);  
-decode_results results;
 
 void setup(){
   Serial.begin(9600);
@@ -27,7 +20,7 @@ void setup(){
   pinMode(ultrassomPing, OUTPUT);
   pinMode(saidaRele, OUTPUT);
   pinMode(buzzer,OUTPUT);
-  irrecv.enableIRIn();
+  
   pinMode(movData, INPUT);
   pinMode(ultrassomEcho, INPUT);
   pinMode(sensorReflex, INPUT);
@@ -40,12 +33,6 @@ void loop(){
     paused = !paused;
     Buzzer(buzzer, 2000, 20, 1);
     while(digitalRead(sensorReflex) == 0){}
-  } else if(irrecv.decode(&results)){
-    if((results.value) == 0x40BF609F){//codigo do botao do controle remoto
-      paused = !paused;
-      Buzzer(buzzer, 2000, 20, 1);
-    }
-    irrecv.resume();  
   }
     
   if(paused){      

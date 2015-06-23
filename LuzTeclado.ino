@@ -1,4 +1,4 @@
-/*Created by RicardoKeso*/
+/*Created by RicardoKeso - V4 (com botao IR, buzzer, IR remoto)*/
 
 #include <IRremote.h>
 #include <NewTone.h>

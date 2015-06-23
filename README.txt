@@ -7,7 +7,7 @@ Light Dependent Resistor (LDR);
 Sensor de movimento;
 Sensor ultrassonico;
 Rele 5v 1ch;
-Sensor de IR de reflexao;
+Sensor IR de reflexao;
 
 LIGAÇÃO DOS COMPONENTES:
 

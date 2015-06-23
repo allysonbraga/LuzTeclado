@@ -1,4 +1,4 @@
-# LuzTeclado
+# LuzTeclado V2 (com botao IR, buzzer)
 Acender a luz de iluminacao do teclado apenas quando o usuario estiver sentado a frente do mesmo.
 
 COMPONENTES:
@@ -8,7 +8,7 @@ Sensor de movimento;
 Sensor ultrassonico;
 Rele 5v 1ch;
 Sensor IR de reflexao;
-Receptor IR
+Buzzer;
 
 LIGAÇÃO DOS COMPONENTES:
 
@@ -48,18 +48,7 @@ sensorOpticoDeReflexao:
   anodo do receptor em T1 do r12k e em D7;
   T2 do r12k em +5.
   
-sensorIR_remoto:
-  T1 em D11;
-  T2 em GND;
-  T3 em T1 r150;
-  T2 r150 em +5.
-  
 buzzer:
   T+ em T1 r150;
   T2 r150 em D10;
   T- em GND;
-
-Ha um conflito entre a funcao tone() e o IRremoteInt.h
-pois usam a mesma chamada de funcao timer2.
-
-Para resolver este problema, utilizo a biblioteca NewTone chamando a função NewTone() no lugar de tone().

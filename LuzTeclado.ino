@@ -1,3 +1,5 @@
+/*Created by RicardoKeso - V5 (com botao IR, buzzer, IR remoto, funcoes)*/
+
 #include <NewTone.h>
 #include <IRremote.h>
 
@@ -49,7 +51,7 @@ void loop(){
     while(digitalRead(sensorReflex) == 0){}    
   } else if(irrecv.decode(&results)){
       float valorIR = (results.value); 
-      if(valorIR == 0x40BF609F){
+      if(valorIR == 0x40BF609F){  //codigo controle remoto
         Buzzer(buzzer, 2000, 20, 1);
         paused = !paused;
         if(paused){
@@ -58,13 +60,13 @@ void loop(){
         } else {
           funcaoAtiva = funcaoAtivaOld;
         }  
-      } else if(valorIR == 0xFFFFFFFF){
+      } else if(valorIR == 0xFFFFFFFF){ //codigo controle remoto
         for(int cont = 0; cont < 15; cont++){
           Buzzer(buzzer, 2000, 20, 1); 
           delay(1000); 
         }
         funcaoAtiva = 2;
-      } else if(valorIR == 0x00000000){
+      } else if(valorIR == 0x00000000){ //codigo controle remoto
         Buzzer(buzzer, 2000, 20, 1);
         funcaoAtiva = 0;
       }

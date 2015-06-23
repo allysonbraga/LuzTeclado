@@ -1,4 +1,4 @@
-# LuzTeclado V2 (com botao IR, buzzer)
+# LuzTeclado V3 (com botao IR, buzzer)
 Acender a luz de iluminacao do teclado apenas quando o usuario estiver sentado a frente do mesmo.
 
 COMPONENTES:
